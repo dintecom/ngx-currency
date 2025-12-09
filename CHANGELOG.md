@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [20.0.0](https://github.com/dintecom/ngx-currency/compare/v19.0.0...v20.0.0) (2025-06-30)
+
+
+### Features
+
+* migrate to Angular 20 ([96fa11d](https://github.com/dintecom/ngx-currency/commit/96fa11d378f1eef91c4b452edf0a67773ccecde4))
+
 ## [19.0.0](https://github.com/nbfontana/ngx-currency/compare/v18.0.0...v19.0.0) (2025-01-06)
 
 

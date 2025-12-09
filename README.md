@@ -1,9 +1,9 @@
 # ngx-currency
 
-[![npm version](https://badge.fury.io/js/ngx-currency.png)](http://badge.fury.io/js/ngx-currency)
-[![GitHub issues](https://img.shields.io/github/issues/nbfontana/ngx-currency.png)](https://github.com/nbfontana/ngx-currency/issues)
-[![GitHub stars](https://img.shields.io/github/stars/nbfontana/ngx-currency.png)](https://github.com/nbfontana/ngx-currency/stargazers)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.png)](https://raw.githubusercontent.com/nbfontana/ngx-currency/master/LICENSE)
+[![npm version](https://badge.fury.io/js/@dintecom%2Fngx-currency.png)](https://www.npmjs.com/package/@dintecom/ngx-currency)
+[![GitHub issues](https://img.shields.io/github/issues/dintecom/ngx-currency.png)](https://github.com/dintecom/ngx-currency/issues)
+[![GitHub stars](https://img.shields.io/github/stars/dintecom/ngx-currency.png)](https://github.com/dintecom/ngx-currency/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.png)](https://raw.githubusercontent.com/dintecom/ngx-currency/master/LICENSE)
 
 ## Demo
 
