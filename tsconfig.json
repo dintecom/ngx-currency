@@ -3,6 +3,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "ngx-currency": ["./dist/ngx-currency"]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -10,9 +13,6 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "paths": {
-      "ngx-currency": ["./dist/ngx-currency"]
-    },
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
@@ -22,7 +22,21 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
     "strictTemplates": true
-  }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ngx-currency/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-currency/tsconfig.spec.json"
+    }
+  ]
 }

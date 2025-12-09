@@ -21,7 +21,7 @@ export class InputHandler {
   handleInput(): void {
     const rawValue = this.inputService.rawValue ?? '';
     const selectionStart = this.inputService.inputSelection.selectionStart;
-    const keyCode = rawValue.charCodeAt(selectionStart - 1);
+    const keyChar = rawValue[selectionStart - 1];
     const rawValueLength = rawValue.length;
     const storedRawValueLength = this.inputService.storedRawValue.length;
 
@@ -42,7 +42,7 @@ export class InputHandler {
         this.inputService.updateFieldValue(selectionStart + 1);
 
         // Then backspace it.
-        this.inputService.removeNumber(8);
+        this.inputService.removeNumber('Backspace');
         this.onModelChange(this.inputService.value);
       }, 0);
     }
@@ -52,13 +52,41 @@ export class InputHandler {
       this.inputService.updateFieldValue(selectionStart - 1);
 
       // Process the character like a keypress.
-      this._handleKeypressImpl(keyCode);
+      switch (keyChar) {
+        case undefined:
+        case 'Tab':
+        case 'Enter':
+          return;
+        case '+':
+          this.inputService.changeToPositive();
+          break;
+        case '-':
+          this.inputService.changeToNegative();
+          break;
+        default:
+          if (this.inputService.canInputMoreNumbers) {
+            const selectionRangeLength = Math.abs(
+              this.inputService.inputSelection.selectionEnd -
+                this.inputService.inputSelection.selectionStart,
+            );
+
+            if (
+              selectionRangeLength == (this.inputService.rawValue?.length ?? 0)
+            ) {
+              this.setValue(null);
+            }
+
+            this.inputService.addNumber(keyChar);
+          }
+          break;
+      }
+
+      this.onModelChange(this.inputService.value);
     }
   }
 
   handleKeydown(event: KeyboardEvent): void {
-    const keyCode = event.which || event.charCode || event.keyCode;
-    if (keyCode == 8 || keyCode == 46 || keyCode == 63272) {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
       event.preventDefault();
 
       if (
@@ -70,7 +98,7 @@ export class InputHandler {
       ) {
         this.clearValue();
       } else {
-        this.inputService.removeNumber(keyCode);
+        this.inputService.removeNumber(event.key);
         this.onModelChange(this.inputService.value);
       }
     }
@@ -78,49 +106,6 @@ export class InputHandler {
 
   clearValue() {
     this.setValue(this.inputService.isNullable() ? null : 0);
-    this.onModelChange(this.inputService.value);
-  }
-
-  handleKeypress(event: KeyboardEvent): void {
-    const keyCode = event.which || event.charCode || event.keyCode;
-    event.preventDefault();
-    if (keyCode === 97 && event.ctrlKey) {
-      return;
-    }
-
-    this._handleKeypressImpl(keyCode);
-  }
-
-  private _handleKeypressImpl(keyCode: number): void {
-    switch (keyCode) {
-      case undefined:
-      case 9:
-      case 13:
-        return;
-      case 43:
-        this.inputService.changeToPositive();
-        break;
-      case 45:
-        this.inputService.changeToNegative();
-        break;
-      default:
-        if (this.inputService.canInputMoreNumbers) {
-          const selectionRangeLength = Math.abs(
-            this.inputService.inputSelection.selectionEnd -
-              this.inputService.inputSelection.selectionStart,
-          );
-
-          if (
-            selectionRangeLength == (this.inputService.rawValue?.length ?? 0)
-          ) {
-            this.setValue(null);
-          }
-
-          this.inputService.addNumber(keyCode);
-        }
-        break;
-    }
-
     this.onModelChange(this.inputService.value);
   }
 
