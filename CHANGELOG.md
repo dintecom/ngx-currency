@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.0.0](https://github.com/dintecom/ngx-currency/compare/v20.0.0...v21.0.0) (2025-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename NgxCurrencyDirective to NgxCurrency
+
+Also fixes:
+* drop deprecated KeyboardEvent which, charCode and keyCode
+* drop deprecated keydown event
+* drop deprecated isChromeAndroid function
+
+### Features
+
+* migrate to Angular 21 ([0579680](https://github.com/dintecom/ngx-currency/commit/0579680dd3e23b0e3bdbb297c5c958c4a5466fab))
+* **package:** rename to @dintecom/ngx-currency ([fc7c712](https://github.com/dintecom/ngx-currency/commit/fc7c71272011145b8ac297197b8de71fdb9edf42))
+
 ## [20.0.0](https://github.com/dintecom/ngx-currency/compare/v19.0.0...v20.0.0) (2025-06-30)
 
 
