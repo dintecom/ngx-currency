@@ -25,8 +25,30 @@ export class InputHandler {
     const rawValueLength = rawValue.length;
     const storedRawValueLength = this.inputService.storedRawValue.length;
 
+    // Multi-character change (paste, select-all+type, autocomplete, etc.)
+    // Fix for: https://github.com/nbfontana/ngx-currency/issues/96
     if (Math.abs(rawValueLength - storedRawValueLength) != 1) {
-      this.inputService.updateFieldValue(selectionStart);
+      // Extract numeric characters and decimal point from the new value
+      const numericChars = rawValue.replace(/[^0-9.]/g, '');
+
+      if (numericChars.length > 0) {
+        // Clear the field first
+        this.setValue(null);
+
+        // Process each character sequentially
+        for (const char of numericChars) {
+          if (char === '.') {
+            // Decimal point handling - addNumber handles this
+            this.inputService.addNumber(char);
+          } else {
+            this.inputService.addNumber(char);
+          }
+        }
+      } else {
+        // No numeric content - just update field
+        this.inputService.updateFieldValue(selectionStart);
+      }
+
       this.onModelChange(this.inputService.value);
       return;
     }
