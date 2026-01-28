@@ -11,7 +11,12 @@ export default defineConfig(
         projectService: true,
       },
     },
-    extends: [eslint.configs.recommended, ...tseslint.configs.recommended, ...tseslint.configs.stylistic, ...angular.configs.tsRecommended],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...angular.configs.tsRecommended,
+    ],
     processor: angular.processInlineTemplates,
     rules: {
       "@typescript-eslint/no-deprecated": "warn",
@@ -19,9 +24,12 @@ export default defineConfig(
   },
   {
     files: ["**/*.html"],
-    extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
+    extends: [
+      ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
+    ],
     rules: {
-      '@angular-eslint/template/no-autofocus': 'off',
+      "@angular-eslint/template/no-autofocus": "off",
     },
   },
 );
