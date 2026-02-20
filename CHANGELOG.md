@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [21.0.1](https://github.com/dintecom/ngx-currency/compare/v21.1.0...v21.0.1) (2026-02-20)
+
+
+### Bug Fixes
+
+* select all (e.g. Ctrl+A) then a Number is 0.X instead of 0.0X ([#96](https://github.com/dintecom/ngx-currency/issues/96)) ([9cf4d97](https://github.com/dintecom/ngx-currency/commit/9cf4d9735c871e266d50e16e149314b6211cf57a))
+
 ## [21.0.0](https://github.com/dintecom/ngx-currency/compare/v20.0.0...v21.0.0) (2025-12-09)
 
 
